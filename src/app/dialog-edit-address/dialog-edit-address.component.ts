@@ -25,7 +25,7 @@ export class DialogEditAddressComponent implements OnInit {
     this
       .firestore
       .collection('users')
-      .doc('this.user.userId')
+      .doc(this.user.userId)
       .update(this.user.toJSON())
       .then((result: any) => {
         console.log('user has been updated ', result);

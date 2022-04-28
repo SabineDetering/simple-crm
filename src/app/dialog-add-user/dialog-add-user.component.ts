@@ -19,7 +19,7 @@ export class DialogAddUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveUser() {
+  firstSaveUser() {
     this.loading = true;
     this.user.birthDate = this.birthDate.getTime();
     console.log(this.user);
@@ -29,6 +29,23 @@ export class DialogAddUserComponent implements OnInit {
       .add(this.user.toJSON())
       .then((result: any) => {
         console.log('user has been added ', result);
+        this.user.userId = result.id;
+        console.log('this.user after getting id ', this.user);
+        this.saveUserWithId();
+        // this.loading = false;
+        // this.dialogRef.close();
+      })
+  }
+
+
+  saveUserWithId() {
+    this
+      .firestore
+      .collection('users')
+      .doc(this.user.userId)
+      .update(this.user.toJSON())
+      .then((result: any) => {
+        console.log('user has been updated ', result);
         this.loading = false;
         this.dialogRef.close();
       })
