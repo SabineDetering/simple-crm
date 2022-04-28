@@ -12,11 +12,15 @@
     min-height: 56px;
     display: flex;
     align-items: center;
+    img{
+        height: 36px;
+                object-fit: contain;
+    }
 }
 
 mat-toolbar {
-    min-height: 56px;
-    height: 56px;
+    min-height: 69px;
+    height: 69px;
 }
 
 ul {

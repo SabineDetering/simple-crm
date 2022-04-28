@@ -25,6 +25,11 @@ import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire/compat';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
+import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
 
 
 @NgModule({
@@ -32,7 +37,11 @@ import { MatCardModule } from '@angular/material/card';
     AppComponent,
     DashboardComponent,
     UserComponent,
-    DialogAddUserComponent
+    DialogAddUserComponent,
+    UserDetailComponent,
+    LegalNoticeComponent,
+    DialogEditUserComponent,
+    DialogEditAddressComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +63,8 @@ import { MatCardModule } from '@angular/material/card';
     provideDatabase(() => getDatabase()),
     AngularFireModule.initializeApp(environment.firebase),
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule,
+    MatMenuModule
 
   ],
   providers: [],

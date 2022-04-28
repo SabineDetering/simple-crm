@@ -1,6 +1,7 @@
-import { Component, InjectionToken,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.class';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -13,7 +14,7 @@ export class DialogAddUserComponent implements OnInit {
   birthDate: Date;
   loading = false;
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore,public dialogRef: MatDialogRef<DialogAddUserComponent>) { }
 
   ngOnInit(): void {
   }
@@ -29,6 +30,7 @@ export class DialogAddUserComponent implements OnInit {
       .then((result: any) => {
         console.log('user has been added ', result);
         this.loading = false;
+        this.dialogRef.close();
       })
   }
 
