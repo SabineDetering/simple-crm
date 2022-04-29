@@ -32,6 +32,7 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
 import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,7 @@ import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-ad
     MatProgressBarModule,
     MatCardModule,
     MatMenuModule
+
 
   ],
   providers: [],

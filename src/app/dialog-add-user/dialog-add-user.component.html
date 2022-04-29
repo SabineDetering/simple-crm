@@ -1,58 +1,56 @@
-<div class="dialog-container">
-    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
-    <h2 mat-dialog-title>Add user</h2>
-    <mat-dialog-content>
-        <div>
-            <mat-form-field class="mr-16" appearance="outline">
-                <mat-label>Firstname</mat-label>
-                <input [(ngModel)]="user.firstName" matInput [disabled]="loading">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Lastname</mat-label>
-                <input [(ngModel)]="user.lastName" matInput [disabled]="loading">
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Email</mat-label>
-                <input type="email" matInput [(ngModel)]="user.email" [disabled]="loading">
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field class="mr-16 full-width" appearance="outline">
-                <mat-label>Birthdate</mat-label>
-                <input [(ngModel)]="birthDate" matInput [matDatepicker]="picker" [disabled]="loading">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Street + Housenumber</mat-label>
-                <input matInput [(ngModel)]="user.street" [disabled]="loading">
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field appearance="outline" class="mr-16">
-                <mat-label>Zip-Code</mat-label>
-                <input  matInput [(ngModel)]="user.zipCode" [disabled]="loading">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>City</mat-label>
-                <input matInput [(ngModel)]="user.city" [disabled]="loading">
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field appearance="outline" class="full-width">
-                <mat-label>Country</mat-label>
-                <input matInput [(ngModel)]="user.country" [disabled]="loading">
-            </mat-form-field>
-        </div>
-    </mat-dialog-content>
-    <mat-dialog-actions>
-        <button mat-button mat-dialog-close>Cancel</button>
-        <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-        <button mat-button (click)="firstSaveUser()" [disabled]="loading" >Save</button>
-    </mat-dialog-actions>
-</div>
+<form #addUserForm="ngForm">
+    <div class="dialog-container form-group">
+        <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+        <h2 mat-dialog-title>Add user</h2>
+        <mat-dialog-content>
+            <div class="full-width">
+                <mat-form-field class="mr-16" appearance="outline">
+                    <mat-label>Firstname</mat-label>
+                    <input [(ngModel)]="user.firstName" name="firstName" matInput required [disabled]="loading">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Lastname</mat-label>
+                    <input [(ngModel)]="user.lastName" name="lastName" matInput required [disabled]="loading">
+                </mat-form-field>
+            </div>
+            <div class="full-width">
+                <mat-form-field class="mr-16" appearance="outline" >
+                    <mat-label>Area Code</mat-label>
+                    <input type="text" matInput [(ngModel)]="user.areaCode" name="areaCode" [disabled]="loading">
+                </mat-form-field>
+                <span class="mr-16"> / </span>
+                <mat-form-field  appearance="outline" >
+                    <mat-label>Phone Number</mat-label>
+                    <input type="text" matInput [(ngModel)]="user.phone" name="phone" [disabled]="loading">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput [(ngModel)]="user.email" name="email" email [disabled]="loading">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Street + Housenumber</mat-label>
+                    <input matInput [(ngModel)]="user.street" name="street" [disabled]="loading">
+                </mat-form-field>
+            </div>
+            <div class="full-width">
+                <mat-form-field appearance="outline" class="mr-16">
+                    <mat-label>Zip-Code</mat-label>
+                    <input matInput [(ngModel)]="user.zipCode" name="zipCode" pattern="\d{5}" [disabled]="loading">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>City</mat-label>
+                    <input matInput [(ngModel)]="user.city" name="city" [disabled]="loading">
+                </mat-form-field>
+            </div>
+        </mat-dialog-content>
+        <mat-dialog-actions>
+            <button mat-button mat-dialog-close>Cancel</button>
+            <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+            <button mat-button (click)="saveUser()" [disabled]="loading||!addUserForm.valid">Save</button>
+        </mat-dialog-actions>
+    </div>
+</form>

@@ -11,7 +11,7 @@ import { User } from 'src/models/user.class';
 export class DialogEditAddressComponent implements OnInit {
   user: User;
   loading = false;
-  // userId = 'ljgpfZQRvzkG7CX3ASVc';
+  userId:string;
 
   constructor(public dialogRef: MatDialogRef<DialogEditAddressComponent>,private firestore: AngularFirestore) { }
 
@@ -25,7 +25,7 @@ export class DialogEditAddressComponent implements OnInit {
     this
       .firestore
       .collection('users')
-      .doc(this.user.userId)
+      .doc(this.userId)
       .update(this.user.toJSON())
       .then((result: any) => {
         console.log('user has been updated ', result);

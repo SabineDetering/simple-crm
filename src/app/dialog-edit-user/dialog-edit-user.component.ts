@@ -10,6 +10,7 @@ import { User } from 'src/models/user.class';
 })
 export class DialogEditUserComponent implements OnInit {
   user: User;
+  userId: string;
   loading = false;
   birthDate: Date;
 
@@ -24,7 +25,7 @@ export class DialogEditUserComponent implements OnInit {
     this
       .firestore
       .collection('users')
-      .doc(this.user.userId)
+      .doc(this.userId)
       .update(this.user.toJSON())
       .then((result: any) => {
         console.log('user has been updated ', result);

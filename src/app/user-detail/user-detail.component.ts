@@ -34,6 +34,7 @@ export class UserDetailComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogEditAddressComponent);
     //copy user 
     dialogRef.componentInstance.user = new User(this.user.toJSON());
+    dialogRef.componentInstance.userId = this.userId;
     console.log('übergabe an dialoig ', dialogRef.componentInstance.user);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -46,6 +47,7 @@ export class UserDetailComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogEditUserComponent);
     //copy user
     dialogRef.componentInstance.user = new User(this.user.toJSON());
+    dialogRef.componentInstance.userId = this.userId;
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

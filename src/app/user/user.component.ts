@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { User } from '../../models/user.class';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
@@ -12,16 +13,17 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class UserComponent implements OnInit {
 
   user = new User();
-  allUsers: User[];
+  allUsers = [];
   constructor(public dialog: MatDialog, private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
     this.firestore
       .collection('users')
-      .valueChanges()
+      .valueChanges({ idField: 'userId' })
       .subscribe((users: any) => {
-        console.log('update from firestore', users)
+        console.log('update from firestore', users);
         this.allUsers = users;
+        console.log('allUsers', this.allUsers)
       });
 
   }
