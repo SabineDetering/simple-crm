@@ -24,6 +24,19 @@ body {
     width: 100%;
 }
 
+.d-flex{
+    display:flex;
+}
+.justify-stretch{
+   justify-content: stretch ;
+}
+.flex-grow-1{
+    flex-grow: 1;
+}
+.align-center{
+    align-items: center;
+}
+
 .dialog-container {
     position: relative;
 
